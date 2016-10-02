@@ -1,2 +1,7 @@
 sudo service postgresql start
 rails s -b $IP -p $PORT
+
+git add -A
+
+git commit -m "first commit"
+
