@@ -27,6 +27,10 @@ gem 'faker'
 
 gem 'devise'
 
+gem 'rails_admin'
+
+gem 'cancan'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
