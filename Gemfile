@@ -31,6 +31,9 @@ gem 'rails_admin'
 
 gem 'cancan'
 
+gem 'pry-rails'
+gem 'better_errors'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
