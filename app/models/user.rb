@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   
   mount_uploader :avatar, AvatarUploader
   
-  has_many :blogs
+  has_many :blogs, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.find_by(email: auth.info.email)
