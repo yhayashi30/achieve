@@ -1,0 +1,36 @@
+<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :charge_id %>
+  
+  <div class="field">
+    <%= f.label :タイトル %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :内容 %><br>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :締め切り %><br>
+    <%= f.datetime_select :deadline, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :ステータス %><br>
+    <%= f.select :status, Task.statuses.keys, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit '登録', class: 'btn btn-primary btn-block'%>
+  </div>
+<% end %>

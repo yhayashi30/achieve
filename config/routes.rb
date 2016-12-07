@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tasks
   get 'users/detail'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

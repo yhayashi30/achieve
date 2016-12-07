@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  title: MyString
+  content: MyText
+  deadline: 2016-12-07 13:31:43
+  charge_id: 1
+  status: 1
+
+two:
+  user_id: 
+  title: MyString
+  content: MyText
+  deadline: 2016-12-07 13:31:43
+  charge_id: 1
+  status: 1
