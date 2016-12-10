@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :submit_requests
   resources :tasks
   get 'users/detail'
 
@@ -26,6 +27,13 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
+  resources :submit_requests do
+    get 'inbox', on: :collection
+    member do
+      patch 'approve'
+      patch 'reject'
+    end
+  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

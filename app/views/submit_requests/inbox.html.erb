@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="wrapper col-md-10 col-md-offset-1 col-sm-10">
+    <p id="notice"><%= notice %></p>
+    
+    <h1>マイ依頼一覧</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ユーザ</th>
+          <th>タスク</th>
+          <th>メッセージ</th>
+          <th>依頼ユーザ</th>
+          <th>ステータス</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @submit_requests.each do |submit_request| %>
+          <tr>
+            <td><%= submit_request.user.name %></td>
+            <td><%= submit_request.task.title %></td>
+            <td><%= submit_request.message %></td>
+            <td><%= submit_request.request_user_id.name %></td>
+            <td><%= submit_request.status %></td>
+            <td><%= link_to '照会', submit_request %></td>
+            <td><%= link_to '承認する', approve_submit_request_path(submit_request, submit_request: {status: 2}), method: :patch, data: { confirm: '承認しますか?' } %></td>
+            <td><%= link_to '却下する', reject_submit_request_path(submit_request, submit_request: {status: 9}), method: :patch, data: { confirm: '却下しますか?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
