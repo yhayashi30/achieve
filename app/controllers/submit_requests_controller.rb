@@ -1,5 +1,5 @@
 class SubmitRequestsController < ApplicationController
-  before_action :set_submit_request, only: [:show, :edit, :update, :destroy, :approve]
+  before_action :set_submit_request, only: [:show, :edit, :update, :destroy, :approve, :reject]
   before_action :authenticate_user!
 
   # GET /submit_requests
@@ -10,8 +10,8 @@ class SubmitRequestsController < ApplicationController
 
   # GET /submit_requests/1
   # GET /submit_requests/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /submit_requests/new
   def new
@@ -29,7 +29,7 @@ class SubmitRequestsController < ApplicationController
 
     respond_to do |format|
       if @submit_request.save
-        format.html { redirect_to @submit_request, notice: 'Submit request was successfully created.' }
+        format.html { redirect_to @submit_request, notice: 'タスク依頼を追加しました。' }
         format.json { render :show, status: :created, location: @submit_request }
       else
         format.html { render :new }
@@ -86,12 +86,10 @@ class SubmitRequestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_submit_request
       @submit_request = SubmitRequest.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def submit_request_params
       params.require(:submit_request).permit(:user_id, :task_id, :message, :request_user_id, :status)
     end

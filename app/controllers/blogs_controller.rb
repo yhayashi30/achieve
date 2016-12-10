@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def index
-    @blogs = Blog.includes(:user)
+    @blogs = Blog.select(:id, :title, :content, :user_id)
   end
   
   # showアククションを定義します。入力フォームと一覧を表示するためインスタンスを2つ生成します。
@@ -24,8 +24,10 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blogs_params)
     @blog.user_id = current_user.id
     if @blog.save
-      redirect_to blogs_path, notice:"ブログを作成しました！"
+      #redirect_to blogs_path, notice:"ブログを作成しました！"
       NoticeMailer.sendmail_blog(@blog).deliver
+      @blogs = Blog.select(:id, :title, :content, :user_id)
+      render action: 'index'
     else
       render action: 'new'
     end

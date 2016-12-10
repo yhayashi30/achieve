@@ -26,6 +26,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to blog_path(@blog), notice: 'コメントを削除しました。' }
       format.json { render :show, location: @comment}
+      format.js { render :index}
     end
   end
 
