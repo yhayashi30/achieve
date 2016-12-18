@@ -10,6 +10,7 @@ class BlogsController < ApplicationController
   def show
     @comment = @blog.comments.build
     @comments = @blog.comments
+    Notification.fiad(paramas[:notification_id]).update(read: true) if params[:notification_id]
   end
   
   def new

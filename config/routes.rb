@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'notifications/index'
+
   resources :tasks
   get 'users/detail'
 
@@ -32,6 +34,9 @@ Rails.application.routes.draw do
       patch 'approve'
       patch 'reject'
     end
+  end
+  resources :conversations do
+    resources :messages
   end
 
   if Rails.env.development?
